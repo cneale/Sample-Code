@@ -1,0 +1,60 @@
+package edu.cmu.cs15437.hw4.databeans;
+
+import java.util.Date;
+
+public class EventBean implements Comparable<EventBean>{
+
+    private String event;
+	private int		eventid;	
+	private String comment;
+    private String sdate;
+	private String stime;
+	private String edate;
+	private String etime;
+	private String location;
+	private String userid;
+
+    public EventBean(String e) { 
+		this.event = e;
+		}
+
+    public EventBean(int e) { 
+		this.eventid = e;
+	}
+	public int    getEventId()    		{ return eventid;    }		
+	public String    getEvent()    		{ return event;    }	
+    public String    getComment()       { return comment;          }	
+	public String getUserId()        	{ return userid;          }
+	public String getSDate()       		{ return sdate;          }
+    public String getSTime()        		{ return stime;          }
+	public String getEDate()       		{ return edate;          }
+    public String getTTime()        		{ return etime;          }
+	public String getLocation()         { return location;          }
+
+	
+    public void setEvent(String s) 				{ event = s;             }
+	public void setEventId(int s) 				{ eventid = s;             }
+	public void setComment(String s)  			{ comment = s;             }
+	public void setUserId(String s)             { userid = s;           }
+	public void setSDate(String s)  				{ sdate = s;             }
+	public void setSTime(String s)              	{ stime = s;           }
+	public void setEDate(String s)  				{ edate = s;             }
+	public void setETime(String s)              	{ etime = s;           }
+	public void setLocation(String s)           { location = s;           }
+	
+	public int compareTo(EventBean other) {
+	// Order first by owner, then by position
+		if (Date.parse(edate) < Date.parse(other.edate))
+			return -1;
+		else return 1;
+    }
+	
+    public boolean equals(Object obj) {
+	if (obj instanceof EventBean) {
+	    EventBean other = (EventBean) obj;
+	    return compareTo(other) == 0;
+	}
+	return false;
+    }
+	
+}

@@ -1,0 +1,79 @@
+package edu.cmu.cs15437.hw4.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import edu.cmu.cs15437.hw4.model.Model;
+import edu.cmu.cs15437.hw4.model.MessageDAO;
+import edu.cmu.cs15437.hw4.model.UserDAO;
+
+import org.mybeans.dao.DAOException;
+import org.mybeans.form.FormBeanException;
+import org.mybeans.form.FormBeanFactory;
+
+import edu.cmu.cs15437.hw4.databeans.MessageBean;
+import edu.cmu.cs15437.hw4.databeans.UserBean;
+import edu.cmu.cs15437.hw4.formbeans.IdForm;
+import edu.cmu.cs15437.hw4.formbeans.ComposeForm;
+
+/*
+Add a value to the list of bookmarks
+ */
+public class DeleteMessageAction extends Action {
+	private FormBeanFactory<IdForm> formBeanFactory = FormBeanFactory.getInstance(IdForm.class);
+
+	private MessageDAO messageDAO;
+	private UserDAO  userDAO;
+
+    public DeleteMessageAction(Model model) {
+    	messageDAO = model.getMessageDAO();
+    	userDAO  = model.getUserDAO();
+	}
+
+    public String getName() { return "deletereadmessage.do"; }
+
+    public String perform(HttpServletRequest request) {
+        List<String> errors = new ArrayList<String>();
+        request.setAttribute("errors",errors);
+		String button = request.getParameter("button");
+        
+		try {
+
+			IdForm form = formBeanFactory.create(request);
+			request.setAttribute("form",form);
+	    	
+	    	UserBean user = (UserBean) request.getSession().getAttribute("user");
+			
+			if (!form.isPresent()) {
+	            return "mymessagelist.jsp";
+	        }
+	
+	        // Any validation errors?
+			String webapp = request.getContextPath();
+			
+	        errors.addAll(form.getValidationErrors());
+	        if (errors.size() == 0) {
+	            return "mymessagelist.jsp";
+	        }
+			if(button.equals("delete"))		
+				messageDAO.delete(form.getIdAsInt(), user.getUserID());
+			else{
+				MessageBean viewmessage = messageDAO.lookup(form.getIdAsInt());
+				request.getSession().setAttribute("message",viewmessage);
+					
+				return webapp + "/view.do";
+			}
+				
+				return webapp + "/messages.do";
+			
+        } catch (DAOException e) {
+        	errors.add(e.getMessage());
+        	return "error.jsp";
+        } catch (FormBeanException e) {
+        	errors.add(e.getMessage());
+        	return "error.jsp";
+        }
+    }
+}

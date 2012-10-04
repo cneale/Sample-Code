@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model
+END
+FriendshipDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model/FriendshipDAO.java
+END
+Model.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/437repository/!svn/ver/23/src/edu/cmu/cs15437/finalproject/model/Model.java
+END
+UserDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model/UserDAO.java
+END
+EventDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model/EventDAO.java
+END
+LogDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/437repository/!svn/ver/21/src/edu/cmu/cs15437/finalproject/model/LogDAO.java
+END
+MessageDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model/MessageDAO.java
+END
+LocationDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/437repository/!svn/ver/27/src/edu/cmu/cs15437/finalproject/model/LocationDAO.java
+END
