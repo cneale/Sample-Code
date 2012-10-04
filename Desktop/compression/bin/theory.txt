@@ -1,0 +1,34 @@
+Homework 3 (Compression)
+Theory Questions (15 pts)
+
+** Question 1 (2pts)
+   Let n be the length of a byte array on which the Burrows-Wheeler transform 
+   is being computed. The algorithm described in class will take O(n^2 log n) 
+   in the worst-case, assuming that the sorting algorithm used does 
+   Theta(n log n) comparisons, and runs in Theta(n log n) time.
+   
+   Give an example of a byte array of length n which will actually achieve 
+   this worst-case running time. Explain what's going on.
+
+** Question 2 (3pts)
+   A byte array of length n is called a Burrows-Wheeler fixed point if
+   applying the transform produces exactly the same byte array (ignoring 
+   the information needed to encode the starting row).  
+   Give a simple description of the set of all Burrows-Wheeler
+   fixed points. Partial credit will be given if you identify subsets
+   of the set of all fixed points.
+   all arrays of n length with a single repeating value.
+
+** Question 3 (5pts)
+   For this question, you will be doing LZW compression using the initial
+   dictionary "{a=0, c=1, g=2, t=3}". You must show the dictionary you construct.
+
+   a. (2pts) Compress the string "gattacata".
+   20330150
+   b. (3pts) Decompress the sequence "1 0 2 3 5 8".
+   cagtatac
+
+** Question 4 (5pts)
+   Suppose a text file consists of n repetitions of the single word "foobag".
+   Give a Theta bound for the length of the corresponding LZW-compressed file
+   as a function of n. Justify your answer.
